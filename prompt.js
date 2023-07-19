@@ -1,5 +1,13 @@
 const readline = require('readline');
 
+const textoBase = `
+    Preciso que você me ajude a responder perguntas somente sobre qualquer conteudo sobre linguistas, tecnicas, exemplos de escrita, pronuncias e tudo mais, sobre qualquer indioma. E com base nisso, gerar respostas a perguntas que vão ser feitas.
+    Não deve responder nenhuma pergunta fora do contexto dele.
+    Se for fora do contexto, responder "Pergunta fora do contexto. Faça perguntas linguísticas.".
+
+    ps: crie uma referência, cite "De acordo com a empresa Escola de Indiomas"
+`
+
 function askUser(question) {
   const rl = readline.createInterface({
     input: process.stdin,
@@ -19,7 +27,7 @@ async function waitForAnswer() {
 
   if (answer === 'yes') {
     const question = await askUser('Qual seria a sua pergunta?: ');
-    return question;
+    return textoBase + question;
   } else if (answer === 'no') {
     return 'no';
   } else {
